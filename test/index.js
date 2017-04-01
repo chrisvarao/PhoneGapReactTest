@@ -40,7 +40,7 @@ describe('when the hello component renders', () => {
   })
 
   it('button should have expected text', () => {
-    expect(button.textContent).toBe('Say hello')
+    expect(button.textContent).to.equal('Say hello')
   })
 
   describe('when the button is clicked', () => {
@@ -55,7 +55,7 @@ describe('when the hello component renders', () => {
         'hello-message'
       )
 
-      expect(message.length).toEqual(1);
+      expect(message.length).to.equal(1);
     })
   })
 })

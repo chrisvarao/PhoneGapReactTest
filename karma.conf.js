@@ -1,7 +1,7 @@
 // karma.conf.js
 module.exports = function(config) {
   config.set({
-    frameworks: ['jasmine'],
+    frameworks: ['mocha', 'chai'],
     files: [
       './www/bundle.test.js',
     ],
