@@ -7,6 +7,9 @@ module.exports = function(config) {
     ],
     exclude: [
     ],
+    client: {
+        args:  config.tests ? [config.tests] : ['all'],
+    },
     preprocessors: {},
     reporters: ['dots'],
     port: 9876,
@@ -14,6 +17,6 @@ module.exports = function(config) {
     logLevel: config.LOG_INFO,
     autoWatch: true,
     browsers: ['PhantomJS'],
-    singleRun: true
+    singleRun: true,
   });
 };
