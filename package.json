@@ -3,6 +3,7 @@
   "version": "1.0.0",
   "main": "src/index.js",
   "dependencies": {
+    "axios": "^0.16.0",
     "babel-core": "^6.4.5",
     "babel-loader": "^6.2.1",
     "babel-preset-es2015": "^6.3.13",
@@ -33,12 +34,12 @@
     "webpack-merge": "^0.7.3"
   },
   "scripts": {
-    "android": "cordova run android",
-    "ios": "cordova run ios",
+    "android": "webpack && cordova run android && node stub_server",
+    "ios": "webpack && cordova run ios && node stub_server",
     "prepare": "node config && webpack && cordova prepare",
     "build": "node config && webpack && cordova build",
-    "start": "node config && HOST=0.0.0.0 webpack-dev-server",
-    "test": "node config && webpack && karma start karma.conf.js"
+    "start": "node config && webpack && HOST=0.0.0.0 webpack-dev-server | node stub_server",
+    "test": "webpack && karma start karma.conf.js"
   },
   "keywords": [],
   "author": "none specified",

@@ -4,7 +4,7 @@ const webpack = require('webpack');
 
 const ENV = require('./env');
 const PATHS = {
-  src: path.join(__dirname, 'src'),
+  src: path.join(__dirname, 'src/index.jsx'),
   test: path.join(__dirname, 'test'),
   build: path.join(__dirname, 'www'),
 };
@@ -20,20 +20,26 @@ const common = {
     path: PATHS.build,
     filename: outputFilename,
   },
+  resolve: {
+    extensions: ["", ".js", ".jsx"]
+  },
   module: {
     loaders: [
       {
         test: /\.css$/,
         loaders: ['style', 'css?url=false'],
-        // include: entry,
       },
       {
         test: /\.jsx?$/,
         loader: 'babel?cacheDirectory',
-        // include: entry,
       }
     ]
-  }
+  },
+  plugins: [
+    new webpack.DefinePlugin({
+      __API__: "'http://192.168.0.103:4000'",
+    }),
+  ],
 };
 
 if (ENV === 'development') {
@@ -49,8 +55,6 @@ if (ENV === 'development') {
       inline: true,
       progress: true,
 
-      // filename: "./www/bundle.app.js",
-
       // Display only errors to reduce the amount of output.
       stats: 'errors-only',
 
@@ -60,6 +64,9 @@ if (ENV === 'development') {
     },
     plugins: [
       new webpack.HotModuleReplacementPlugin(),
+      new webpack.DefinePlugin({
+        __API__: "'http://192.168.0.103:4000'",
+      }),
     ],
   });
 } else {
