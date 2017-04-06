@@ -73,5 +73,11 @@ if (ENV === 'development') {
   });
 } else {
   // config can be added here for minifying / etc
-  module.exports = merge(common, {});
+  module.exports = merge(common, {
+    plugins: [
+      new webpack.DefinePlugin({
+        __API__: "'http://192.168.0.103:4000'",
+      }),
+    ],
+  });
 }
