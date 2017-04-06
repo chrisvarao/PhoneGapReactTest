@@ -38,6 +38,7 @@ const common = {
   plugins: [
     new webpack.DefinePlugin({
       __API__: "'http://192.168.0.103:4000'",
+      __STUB_SERVER__: false
     }),
   ],
 };
@@ -66,6 +67,7 @@ if (ENV === 'development') {
       new webpack.HotModuleReplacementPlugin(),
       new webpack.DefinePlugin({
         __API__: "'http://192.168.0.103:4000'",
+        __STUB_SERVER__: true
       }),
     ],
   });

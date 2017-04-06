@@ -1,12 +1,6 @@
 import React from 'react';
 
-import axios from 'axios'
-
-var APIHost = __API__
-
-function getAPIUrl(path) {
-  return `${APIHost}${path}`
-}
+import {ListApi as api} from '../api_calls'
 
 const List = React.createClass({
 
@@ -14,14 +8,14 @@ const List = React.createClass({
 
   getInitialState() {
     return {
-      items: this.props.items || ['test', 'item'],
+      items: ['test', 'item'],
     };
   },
 
   componentDidMount() {
-    axios.get(getAPIUrl('/list')).then((res) => {
+    api.get().then((response_json) => {
       this.setState({
-        items: res.data
+        items: response_json
       })
     })
   },
@@ -29,7 +23,6 @@ const List = React.createClass({
   render() {
     return (
       <ul className="list">
-        <li>{getAPIUrl('/list')}</li>
         {this.state.items.map(item => (
           <li>{item}</li>
         ))}
