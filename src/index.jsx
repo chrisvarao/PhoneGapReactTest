@@ -7,6 +7,7 @@ import CSSTransitionGroup from 'react-addons-css-transition-group';
 
 import Hello from './components/Hello'
 import List from './components/List'
+import Item from './components/Item'
 
 const App = React.createClass({
   getInitialState() {
@@ -38,7 +39,7 @@ const App = React.createClass({
           <Route path='/' component={Nav} />
           <Route path='/hello' component={Hello} />
           <Route path='/list' component={List} />
-          <Route path='/index.html' component={Hello} />
+          <Route path='/item/:id' component={Item} />
         </div>
       </Router>
     );

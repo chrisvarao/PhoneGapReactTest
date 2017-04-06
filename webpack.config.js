@@ -32,6 +32,10 @@ const common = {
       {
         test: /\.jsx?$/,
         loader: 'babel?cacheDirectory',
+      },
+      {
+        test: /\.json$/,
+        loader: 'json-loader',
       }
     ]
   },

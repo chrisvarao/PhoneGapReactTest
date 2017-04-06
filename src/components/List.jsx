@@ -1,5 +1,7 @@
 import React from 'react';
 
+import { MemoryRouter as Router, Link, Route } from 'react-router-dom'
+
 import {ListApi as api} from '../api_calls'
 
 const List = React.createClass({
@@ -24,7 +26,7 @@ const List = React.createClass({
     return (
       <ul className="list">
         {this.state.items.map(item => (
-          <li>{item}</li>
+          <li><Link to={'/item/'+item.id}>{item.name}</Link></li>
         ))}
       </ul>
     );

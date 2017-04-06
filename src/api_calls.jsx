@@ -34,6 +34,9 @@ function _end_point(method, url_template, headers) {
 
 module.exports = {
   ListApi: {
-    get: _end_point('get', '/list')
-  } 
+    get: _end_point('get', '/api/list')
+  },
+  ItemApi: {
+    get: _end_point('get', '/api/item/<%= id %>')
+  }
 }
