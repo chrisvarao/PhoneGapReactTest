@@ -15,10 +15,14 @@ const List = React.createClass({
   },
 
   componentDidMount() {
-    api.get().then((response_json) => {
+    api.get()
+    .then((response) => {
       this.setState({
-        items: response_json
+        items: response.data
       })
+    })
+    .catch((error) => {
+      console.log(error)
     })
   },
 

@@ -28,7 +28,18 @@ function _end_point(method, url_template, headers) {
       request.body = JSON.stringify(data_body)
     }
 
-    return fetch(url, request).then((response) => response.json())
+    return fetch(url, request).then((response) => {
+      return response.json().then((response_json) => {
+        var value = {headers: response.headers, code: response.status, data: response_json}
+        if (response.status >= 200 && response.status < 300) {
+          return Promise.resolve(value)
+        } else {
+          return Promise.reject(value)
+        }
+      }).catch((error) => {
+        return Promise.reject(error)
+      })
+    })
   }
 }
 

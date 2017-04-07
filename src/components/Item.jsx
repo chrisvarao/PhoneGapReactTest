@@ -18,8 +18,12 @@ const Item = React.createClass({
   componentDidMount() {
     var id = this.props.match.params.id
 
-    api.get({id: id}).then((response_json) => {
-      this.setState(response_json)
+    api.get({id: id})
+    .then((response) => {
+      this.setState(response.data)
+    })
+    .catch((error) => {
+      console.log(error)
     })
   },
 

@@ -12,7 +12,7 @@ module.exports = {
     item: {
       '1': {status: 200, body: request_item_1},
       '2': {status: 200, body: request_item_2},
-      default: {status: 200, body: request_item_default}
+      default: {status: 404, body: request_item_default}
     }
   }
 }
