@@ -1,6 +1,6 @@
 import React from 'react';
 
-import { MemoryRouter as Router, Link, Route } from 'react-router-dom'
+import { BrowserRouter as Router, Link, Route } from 'react-router-dom'
 
 import {ItemApi as api} from '../api_calls'
 

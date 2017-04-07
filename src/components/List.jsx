@@ -1,6 +1,7 @@
 import React from 'react';
 
-import { MemoryRouter as Router, Link, Route } from 'react-router-dom'
+import { BrowserRouter as Router, Link, Route, withRouter } from 'react-router-dom'
+import { List as MaterialList, ListItem} from 'material-ui/List';
 
 import {ListApi as api} from '../api_calls'
 
@@ -26,13 +27,17 @@ const List = React.createClass({
     })
   },
 
+  onItemToggle(itemId) {
+    this.props.history.push(`/item/${itemId}`)
+  },
+
   render() {
     return (
-      <ul className="list">
+      <MaterialList className="list">
         {this.state.items.map(item => (
-          <li><Link to={'/item/'+item.id}>{item.name}</Link></li>
+          <ListItem primaryText={item.name} onClick={() => {this.onItemToggle(item.id)}} key={item.id}></ListItem>
         ))}
-      </ul>
+      </MaterialList>
     );
   },
 })

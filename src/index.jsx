@@ -2,12 +2,22 @@ import './css/index.css';
 
 import React from 'react';
 import ReactDOM from 'react-dom';
-import { MemoryRouter as Router, Link, Route } from 'react-router-dom'
+import { BrowserRouter as Router, Link, Route } from 'react-router-dom'
 import CSSTransitionGroup from 'react-addons-css-transition-group';
+import {deepOrange500} from 'material-ui/styles/colors';
+import FlatButton from 'material-ui/FlatButton';
+import getMuiTheme from 'material-ui/styles/getMuiTheme';
+import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
 
 import Hello from './components/Hello'
 import List from './components/List'
 import Item from './components/Item'
+
+const muiTheme = getMuiTheme({
+  palette: {
+    accent1Color: deepOrange500,
+  },
+});
 
 const App = React.createClass({
   getInitialState() {
@@ -35,12 +45,14 @@ const App = React.createClass({
 
     return (
       <Router>
-        <div>
-          <Route path='/' component={Nav} />
-          <Route path='/hello' component={Hello} />
-          <Route path='/list' component={List} />
-          <Route path='/item/:id' component={Item} />
-        </div>
+        <MuiThemeProvider muiTheme={muiTheme}>
+          <div>
+            <Route path='/' component={Nav} />
+            <Route path='/hello' component={Hello} />
+            <Route path='/list' component={List} />
+            <Route path='/item/:id' component={Item} />
+          </div>
+        </MuiThemeProvider>
       </Router>
     );
   },
